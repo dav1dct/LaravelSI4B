@@ -35,13 +35,13 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ url('fakultas')}}">
-              <i class="mdi mdi-view-quilt menu-icon"></i>
+              <i class="mdi mdi-animation menu-icon"></i>
               <span class="menu-title">Fakultas</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ url('prodi')}}">
-              <i class="mdi mdi-view-quilt menu-icon"></i>
+              <i class="mdi mdi-application menu-icon"></i>
               <span class="menu-title">Program Studi</span>
             </a>
           </li>
