@@ -5,7 +5,7 @@
 
 @extends('layout.main')
 
-@section('title','Fakultas')
+@section('title','Prodi')
 
 @section('content')
     <div class="col-lg-6 grid-margin stretch-card">
