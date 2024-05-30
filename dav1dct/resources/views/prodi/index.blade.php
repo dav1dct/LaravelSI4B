@@ -1,8 +1,3 @@
-
-        {{-- @foreach ($prodi as $item)
-            <li>{{ $item['nama'] }} {{ $item['singkatan'] }}
-            {{ $item["fakultas"]["nama"] }}</li> --}}
-
 @extends('layout.main')
 
 @section('title','Prodi')
@@ -15,6 +10,7 @@
             <p class="card-description">
               List data Prodi
             </p>
+            <a href="{{ route('prodi.create')}}" class="btn btn-rounded btn-primary">Tambah</a>
             <div class="table-responsive">
               <table class="table">
                 <thead>
