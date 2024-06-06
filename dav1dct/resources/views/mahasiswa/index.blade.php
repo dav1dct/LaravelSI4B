@@ -24,6 +24,7 @@
                             <th>Alamat</th>
                             <th>Prodi</th>
                             <th>URL Foto</th>
+                            <th>Foto</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -34,10 +35,18 @@
                                 <td>{{ $item['tempat_lahir'] }}</td>
                                 <td>{{ $item['tanggal_lahir'] }}</td>
                                 <td>{{ $item['alamat'] }}</td>
-                                <td>{{ $item['nama'] }}</td>
                                 <td>{{ $item["prodi"]["nama"] }}</td>
                                 <td>{{ $item['url_foto'] }}</td>
+                                <td><img src="{{ url('foto/'.$item["url_foto"])}}"> </td>
+                                <td>
+                                    <form action="{{ route('mahasiswa.destroy', $item["id"]) }}" method="post">
+                                        @method('delete')
+                                        @csrf
+                                        <button type='submit' class="btn btn-sm btn-rounded btn-danger show-confirm"data-name={{ $item['nama']}}>Hapus</button>
 
+                                    </form>
+                                    {{-- <a href="{{ route('mahasiswa.edit')}}" --}}
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -47,9 +56,9 @@
                 </div>
                 </div>
                 </div>
-
-@if (session('success'))
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if (session('success'))
     <script>
         Swal.fire({
             title: "Good job!",
@@ -58,5 +67,27 @@
         });
     </script>
 @endif
+<script type="text/javascript">
+ 
+    $('.show_confirm').click(function(event) {
+         var form =  $(this).closest("form");
+         var name = $(this).data("name");
+         event.preventDefault();
+         Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        })
+         .then((willDelete) => {
+           if (willDelete.isConfirmed) {
+             form.submit();
+           }
+         });
+     });
+</script>
 @endsection
    
