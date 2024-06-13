@@ -14,7 +14,13 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
+        if (auth()->user()->role == 'D'){
+            $mahasiswa = Mahasiswa::where('user_id', auth()->user()->id)->get();
+        }else{
+            $mahasiswa = Mahasiswa::all();
+        }
         $mahasiswa = Mahasiswa::all(); //select * from fakultas
+
         return view('mahasiswa.index')
             ->with('mahasiswa', $mahasiswa);
     }
@@ -121,6 +127,9 @@ class MahasiswaController extends Controller
      */
     public function destroy(Mahasiswa $mahasiswa)
     {
+        if (auth()->user()->cannot('delete',$mahasiswa)){
+            abort(403);
+        }
         //dd($mahasiswa);
         File::delete('foto/'. $mahasiswa['url_foto']);
         $mahasiswa->delete();
