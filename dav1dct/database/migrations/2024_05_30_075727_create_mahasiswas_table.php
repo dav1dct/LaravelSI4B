@@ -13,14 +13,12 @@ return new class extends Migration
     {
         Schema::create('mahasiswas', function (Blueprint $table) {
             $table->id();
-            $table->char('npm',10);
-            $table->string('nama',50);
-            $table->string('tempat_lahir',45);
+            $table->char('npm', 10);
+            $table->string('nama', 45);
+            $table->string('tempat_lahir', 45);
             $table->date('tanggal_lahir');
             $table->string('alamat');
-            $table->unsignedBigInteger('prodi_id');
-            $table->foreign('prodi_id')->references('id')->on('prodis');
-
+            $table->foreignId('prodi_id')->constrained();
             $table->string('url_foto');
             $table->timestamps();
         });

@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('prodis', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama',45);
-            $table->string('singkatan',2);
-            $table->foreignId('fakultas_id')->constrained();
-            $table->timestamps();
+        Schema::create('fakultas', function (Blueprint $table) {
+            $table->id(); //id integer autoincrement (1, 2, 3, dst)
+            $table->string('nama', 45);
+            $table->string('singkatan', 4);
+            $table->timestamps(); //create_at and update_at
         });
     }
 
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('prodis');
+        Schema::dropIfExists('fakultas');
     }
 };

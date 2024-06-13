@@ -12,7 +12,7 @@ class FakultasController extends Controller
      */
     public function index()
     {
-        $fakultas = Fakultas::all();
+        $fakultas = Fakultas::all(); //select * from fakultas
         return view('fakultas.index')
             ->with('fakultas', $fakultas);
     }
@@ -30,19 +30,16 @@ class FakultasController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-        // validasi form
+        //dd($request);
         $val = $request->validate([
             'nama' => "required|unique:fakultas",
-            'singkatan' => 'required|max:4'
+            'singkatan' => "required|max:4"
         ]);
 
         Fakultas::create($val);
-    
-        return redirect()->route('fakultas.index')->with('success', $val['nama'].'berhasil disimpan');
+
+        return redirect()->route('fakultas.index')->with('success', $val['nama'].' Berhasil di Simpan');
     }
-
-
 
     /**
      * Display the specified resource.
