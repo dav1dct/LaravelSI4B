@@ -29,7 +29,8 @@ class MahasiswaPolicy
      */
     public function create(User $user): bool
     {
-        return $user->role === 'A' || $user->role === 'D'; 
+        return $user->role === 'A' || $user->role === 'D';
+        // return in_array($user->role, ['A', 'D']);
     }
 
     /**

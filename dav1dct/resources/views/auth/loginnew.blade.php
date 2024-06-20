@@ -6,7 +6,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Spica Admin</title>
+  <title>Login</title>
   <!-- base:css -->
   <link rel="stylesheet" href="../../vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
@@ -31,18 +31,20 @@
               </div>
               <h4>Welcome back!</h4>
               <h6 class="font-weight-light">Happy to see you again!</h6>
-              <form method="POST" action="{{ route('login') }}">
+              <form class="pt-3" method="POST" action="{{ route('login') }}">
                 @csrf
-              <form class="pt-3">
                 <div class="form-group">
-                  <label for="exampleInputEmail">Username</label>
+                  <label for="exampleInputEmail">Email</label>
                   <div class="input-group">
                     <div class="input-group-prepend bg-transparent">
                       <span class="input-group-text bg-transparent border-right-0">
                         <i class="mdi mdi-account-outline text-primary"></i>
                       </span>
                     </div>
-                    <input type="text" class="form-control form-control-lg border-left-0" id="exampleInputEmail" name="email" placeholder="Email">
+                    <input type="text" class="form-control form-control-lg border-left-0" name="email" placeholder="Email">
+                    @error('email')
+                        <span class="text-danger">{{$message}}</span> 
+                    @enderror
                   </div>
                 </div>
                 <div class="form-group">
@@ -53,10 +55,10 @@
                         <i class="mdi mdi-lock-outline text-primary"></i>
                       </span>
                     </div>
-                    <input type="password" class="form-control form-control-lg border-left-0" id="exampleInputPassword" name="password" placeholder="Password">
+                    <input type="password" class="form-control form-control-lg border-left-0" name="password" placeholder="Password">    
                     @error('password')
-                     <span class='text-danger'> {{ $message }} </span>
-                    @enderror                        
+                        <span class="text-danger">{{$message}}</span> 
+                    @enderror                    
                   </div>
                 </div>
                 <div class="my-2 d-flex justify-content-between align-items-center">
@@ -69,8 +71,7 @@
                   <a href="#" class="auth-link text-black">Forgot password?</a>
                 </div>
                 <div class="my-3">
-                  <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">LOGIN</a>
-
+                  <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">LOGIN</button>
                 </div>
                 <div class="mb-2 d-flex">
                   <button type="button" class="btn btn-facebook auth-form-btn flex-grow mr-1">

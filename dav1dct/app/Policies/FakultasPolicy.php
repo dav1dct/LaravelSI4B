@@ -13,7 +13,7 @@ class FakultasPolicy
      */
     public function viewAny(User $user): bool
     {
-        
+        //
     }
 
     /**
